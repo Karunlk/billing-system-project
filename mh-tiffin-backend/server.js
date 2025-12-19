@@ -14,6 +14,10 @@ app.use(cors({
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json());
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ success: false, message: 'Internal Server Error' });
+});
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI, {
