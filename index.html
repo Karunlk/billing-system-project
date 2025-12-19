@@ -1293,6 +1293,59 @@
         // ===== INITIAL CALCULATION =====
         calculateTotals();
     </script>
+// Show login screen if not logged in
+window.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('authToken');
+  if (!token) {
+    showLoginScreen();
+  } else {
+    // Show billing dashboard
+    document.getElementById('billing').style.display = 'block';
+  }
+});
+
+function showLoginScreen() {
+  document.body.innerHTML = `
+    <div style="text-align: center; padding: 50px;">
+      <h1>MH Tiffin Billing System</h1>
+      <p>Please log in to continue</p>
+      <button onclick="showLoginForm()">Login</button>
+    </div>
+  `;
+}
+
+function showLoginForm() {
+  document.body.innerHTML = `
+    <div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc;">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <div style="margin: 10px 0;">
+          <label>Username:</label>
+          <input type="text" id="username" required style="width: 100%; padding: 8px;">
+        </div>
+        <div style="margin: 10px 0;">
+          <label>Password:</label>
+          <input type="password" id="password" required style="width: 100%; padding: 8px;">
+        </div>
+        <button type="submit" style="margin-top: 10px; padding: 10px 20px;">Login</button>
+      </form>
+    </div>
+  `;
+  
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    // For testing, use these credentials
+    if (username === 'admin' && password === 'admin123') {
+      localStorage.setItem('authToken', 'dummy-token');
+      window.location.reload();
+    } else {
+      alert('Invalid username or password');
+    }
+  });
+}
 
 </body>
 </html>
