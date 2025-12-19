@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MH Tiffin - Billing System Dashboard</title>
+    <title>MH Tiffin - Billing System</title>
     <style>
         :root {
             --color-primary: #208090;
@@ -20,14 +20,6 @@
             --color-text-light: #7F8C8D;
             --color-border: #ECF0F1;
             --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            --space-4: 4px;
-            --space-8: 8px;
-            --space-16: 16px;
-            --space-24: 24px;
-            --space-32: 32px;
-            --radius-sm: 6px;
-            --radius-base: 8px;
-            --radius-lg: 12px;
         }
 
         * {
@@ -43,7 +35,7 @@
             line-height: 1.6;
         }
 
-        /* ===== LAYOUT ===== */
+        /* LAYOUT */
         .container-main {
             display: flex;
             min-height: 100vh;
@@ -54,20 +46,20 @@
             width: 280px;
             background: var(--color-bg-dark);
             color: white;
-            padding: var(--space-24);
-            border-right: 2px solid var(--color-border);
+            padding: 24px;
             position: fixed;
             height: 100vh;
             overflow-y: auto;
+            z-index: 100;
         }
 
         .logo {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: var(--space-32);
+            margin-bottom: 32px;
             display: flex;
             align-items: center;
-            gap: var(--space-8);
+            gap: 8px;
         }
 
         .logo-icon {
@@ -86,17 +78,17 @@
         }
 
         .nav-item {
-            margin-bottom: var(--space-16);
+            margin-bottom: 16px;
         }
 
         .nav-link {
             color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            padding: var(--space-12) var(--space-16);
-            border-radius: var(--radius-base);
+            padding: 12px 16px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
-            gap: var(--space-12);
+            gap: 12px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -111,18 +103,18 @@
         .main-content {
             margin-left: 280px;
             flex: 1;
-            padding: var(--space-24);
+            padding: 24px;
         }
 
         .header {
             background: white;
-            padding: var(--space-24);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-24);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .header h1 {
@@ -133,7 +125,8 @@
         .user-info {
             display: flex;
             align-items: center;
-            gap: var(--space-16);
+            gap: 16px;
+            cursor: pointer;
         }
 
         .user-icon {
@@ -149,7 +142,11 @@
             font-size: 18px;
         }
 
-        /* ===== TABS ===== */
+        .user-info:hover .user-icon {
+            background: var(--color-primary-hover);
+        }
+
+        /* TABS */
         .tab-container {
             display: none;
         }
@@ -160,16 +157,16 @@
 
         .tabs-header {
             background: white;
-            padding: var(--space-16);
-            border-radius: var(--radius-lg);
+            padding: 16px;
+            border-radius: 12px;
             display: flex;
-            gap: var(--space-16);
-            margin-bottom: var(--space-24);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            gap: 16px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .tab-btn {
-            padding: var(--space-12) var(--space-20);
+            padding: 12px 20px;
             border: none;
             background: transparent;
             cursor: pointer;
@@ -185,44 +182,44 @@
             border-bottom-color: var(--color-primary);
         }
 
-        /* ===== BILLING TAB ===== */
+        /* BILLING */
         .billing-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-24);
+            gap: 24px;
         }
 
         .billing-card {
             background: white;
-            padding: var(--space-24);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .billing-card h2 {
             font-size: 18px;
-            margin-bottom: var(--space-16);
+            margin-bottom: 16px;
             color: var(--color-text);
         }
 
         .form-group {
-            margin-bottom: var(--space-16);
+            margin-bottom: 16px;
         }
 
         .form-label {
             display: block;
             font-weight: 600;
             font-size: 14px;
-            margin-bottom: var(--space-8);
+            margin-bottom: 8px;
             color: var(--color-text);
         }
 
         .form-input,
         .form-select {
             width: 100%;
-            padding: var(--space-12);
+            padding: 12px;
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-base);
+            border-radius: 8px;
             font-size: 14px;
             font-family: var(--font-family);
             transition: border-color 0.3s ease;
@@ -239,18 +236,18 @@
             max-height: 300px;
             overflow-y: auto;
             border: 1px solid var(--color-border);
-            border-radius: var(--radius-base);
-            padding: var(--space-12);
+            border-radius: 8px;
+            padding: 12px;
         }
 
         .menu-item-btn {
             display: block;
             width: 100%;
-            padding: var(--space-12);
-            margin-bottom: var(--space-8);
+            padding: 12px;
+            margin-bottom: 8px;
             background: var(--color-bg);
             border: 2px solid var(--color-border);
-            border-radius: var(--radius-base);
+            border-radius: 8px;
             cursor: pointer;
             text-align: left;
             font-size: 14px;
@@ -269,25 +266,25 @@
             color: var(--color-primary);
         }
 
-        /* ===== CART ===== */
+        /* CART */
         .cart-section {
             background: white;
-            padding: var(--space-24);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .cart-items {
             max-height: 400px;
             overflow-y: auto;
-            margin-bottom: var(--space-16);
+            margin-bottom: 16px;
         }
 
         .cart-item {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: var(--space-12);
+            align-items: flex-start;
+            padding: 12px;
             border-bottom: 1px solid var(--color-border);
             font-size: 14px;
         }
@@ -299,14 +296,14 @@
         .cart-item-name {
             font-weight: 600;
             color: var(--color-text);
-            margin-bottom: var(--space-4);
+            margin-bottom: 4px;
         }
 
         .cart-item-qty {
             display: flex;
-            gap: var(--space-8);
+            gap: 8px;
             align-items: center;
-            margin-top: var(--space-8);
+            margin-top: 8px;
         }
 
         .qty-btn {
@@ -315,7 +312,7 @@
             border: 1px solid var(--color-border);
             background: white;
             cursor: pointer;
-            border-radius: var(--radius-sm);
+            border-radius: 6px;
             transition: all 0.2s ease;
         }
 
@@ -329,19 +326,20 @@
             color: var(--color-error);
             cursor: pointer;
             font-weight: 600;
+            padding: 4px 8px;
         }
 
         .cart-summary {
             background: var(--color-bg);
-            padding: var(--space-16);
-            border-radius: var(--radius-base);
-            margin-bottom: var(--space-16);
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
         }
 
         .summary-row {
             display: flex;
             justify-content: space-between;
-            padding: var(--space-8) 0;
+            padding: 8px 0;
             font-size: 14px;
         }
 
@@ -350,32 +348,32 @@
             font-weight: 700;
             color: var(--color-primary);
             border-top: 2px solid var(--color-border);
-            padding-top: var(--space-12);
-            margin-top: var(--space-12);
+            padding-top: 12px;
+            margin-top: 12px;
         }
 
         .discount-row {
             display: flex;
-            gap: var(--space-8);
-            margin-bottom: var(--space-12);
+            gap: 8px;
+            margin-bottom: 12px;
         }
 
         .discount-row input {
             flex: 1;
         }
 
-        /* ===== BUTTONS ===== */
+        /* BUTTONS */
         .btn {
-            padding: var(--space-12) var(--space-20);
+            padding: 12px 20px;
             border: none;
-            border-radius: var(--radius-base);
+            border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
-            gap: var(--space-8);
+            gap: 8px;
         }
 
         .btn-primary {
@@ -394,7 +392,7 @@
         .btn-secondary {
             background: var(--color-accent-orange);
             color: white;
-            margin-bottom: var(--space-12);
+            margin-bottom: 12px;
             width: 100%;
             justify-content: center;
         }
@@ -404,34 +402,34 @@
         }
 
         .btn-small {
-            padding: var(--space-8) var(--space-12);
+            padding: 8px 12px;
             font-size: 12px;
         }
 
-        /* ===== TRANSACTIONS TAB ===== */
+        /* TRANSACTIONS */
         .transactions-table {
             background: white;
-            border-radius: var(--radius-lg);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .transactions-header {
             background: var(--color-bg-dark);
             color: white;
-            padding: var(--space-16);
+            padding: 16px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: var(--space-16);
+            gap: 16px;
             font-weight: 600;
             font-size: 14px;
         }
 
         .transactions-row {
-            padding: var(--space-16);
+            padding: 16px;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-            gap: var(--space-16);
+            gap: 16px;
             border-bottom: 1px solid var(--color-border);
             align-items: center;
             font-size: 14px;
@@ -443,8 +441,8 @@
 
         .status-badge {
             display: inline-block;
-            padding: var(--space-4) var(--space-12);
-            border-radius: var(--radius-sm);
+            padding: 4px 12px;
+            border-radius: 6px;
             font-size: 12px;
             font-weight: 600;
         }
@@ -454,30 +452,25 @@
             color: var(--color-success);
         }
 
-        .status-pending {
-            background: rgba(243, 156, 18, 0.1);
-            color: var(--color-warning);
-        }
-
-        /* ===== REPORTS TAB ===== */
+        /* REPORTS */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-24);
-            margin-bottom: var(--space-24);
+            gap: 24px;
+            margin-bottom: 24px;
         }
 
         .stat-card {
             background: white;
-            padding: var(--space-24);
-            border-radius: var(--radius-lg);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
 
         .stat-label {
             font-size: 14px;
             color: var(--color-text-light);
-            margin-bottom: var(--space-8);
+            margin-bottom: 8px;
         }
 
         .stat-value {
@@ -489,10 +482,10 @@
         .stat-change {
             font-size: 12px;
             color: var(--color-success);
-            margin-top: var(--space-8);
+            margin-top: 8px;
         }
 
-        /* ===== PAYMENT MODAL ===== */
+        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -512,8 +505,8 @@
 
         .modal-content {
             background: white;
-            padding: var(--space-32);
-            border-radius: var(--radius-lg);
+            padding: 32px;
+            border-radius: 12px;
             max-width: 500px;
             width: 90%;
             max-height: 90vh;
@@ -523,7 +516,7 @@
         .modal-header {
             font-size: 24px;
             font-weight: 700;
-            margin-bottom: var(--space-24);
+            margin-bottom: 24px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -540,14 +533,14 @@
         .payment-options {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--space-16);
-            margin-bottom: var(--space-24);
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .payment-option {
-            padding: var(--space-16);
+            padding: 16px;
             border: 2px solid var(--color-border);
-            border-radius: var(--radius-base);
+            border-radius: 8px;
             cursor: pointer;
             text-align: center;
             transition: all 0.3s ease;
@@ -561,66 +554,10 @@
 
         .payment-option-icon {
             font-size: 32px;
-            margin-bottom: var(--space-8);
+            margin-bottom: 8px;
         }
 
-        /* ===== SETTINGS TAB ===== */
-        .settings-group {
-            background: white;
-            padding: var(--space-24);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--space-24);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .settings-group h3 {
-            font-size: 16px;
-            margin-bottom: var(--space-16);
-            color: var(--color-text);
-        }
-
-        .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--space-12) 0;
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .setting-row:last-child {
-            border-bottom: none;
-        }
-
-        .toggle {
-            width: 50px;
-            height: 28px;
-            background: var(--color-border);
-            border-radius: var(--radius-full);
-            position: relative;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .toggle.active {
-            background: var(--color-primary);
-        }
-
-        .toggle-circle {
-            width: 24px;
-            height: 24px;
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            transition: left 0.3s ease;
-        }
-
-        .toggle.active .toggle-circle {
-            left: 24px;
-        }
-
-        /* ===== RESPONSIVE ===== */
+        /* RESPONSIVE */
         @media (max-width: 1024px) {
             .sidebar {
                 width: 240px;
@@ -640,17 +577,17 @@
                 width: 100%;
                 height: auto;
                 position: relative;
-                padding: var(--space-16);
+                padding: 16px;
             }
 
             .main-content {
                 margin-left: 0;
-                padding: var(--space-16);
+                padding: 16px;
             }
 
             .header {
                 flex-direction: column;
-                gap: var(--space-16);
+                gap: 16px;
                 text-align: center;
             }
 
@@ -663,240 +600,315 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* LOGIN SCREEN */
+        .login-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #208090 0%, #E67E22 100%);
+            padding: 20px;
+        }
+
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #208090, #E67E22);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 15px;
+        }
+
+        .login-header h1 {
+            margin: 0;
+            color: #2C3E50;
+            font-size: 28px;
+        }
+
+        .login-header p {
+            color: #7F8C8D;
+            margin: 5px 0 0 0;
+        }
+
+        .login-form {
+            display: none;
+        }
+
+        .login-form.active {
+            display: block;
+        }
+
+        .login-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ECF0F1;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: #208090;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .login-btn:hover {
+            background: #1a6574;
+        }
+
+        .login-credentials {
+            text-align: center;
+            color: #7F8C8D;
+            font-size: 12px;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .login-credentials strong {
+            color: #2C3E50;
+        }
     </style>
 </head>
 <body>
-    <div class="container-main">
-        <!-- SIDEBAR -->
-        <aside class="sidebar">
-            <div class="logo">
-                <div class="logo-icon">🍱</div>
-                <span>MH Tiffin</span>
+    <!-- LOGIN SCREEN -->
+    <div id="loginScreen" class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-icon">🍱</div>
+                <h1>MH Tiffin Billing</h1>
+                <p>Professional Billing System</p>
             </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a class="nav-link active" data-tab="billing">💳 Billing</a></li>
-                <li class="nav-item"><a class="nav-link" data-tab="transactions">📊 Transactions</a></li>
-                <li class="nav-item"><a class="nav-link" data-tab="reports">📈 Reports</a></li>
-                <li class="nav-item"><a class="nav-link" data-tab="settings">⚙️ Settings</a></li>
-            </ul>
-        </aside>
-
-        <!-- MAIN CONTENT -->
-        <main class="main-content">
-            <!-- HEADER -->
-            <div class="header">
+            <form id="loginForm" class="login-form active">
                 <div>
-                    <h1>MH Tiffin Billing System</h1>
+                    <label class="form-label">Username</label>
+                    <input type="text" id="username" class="login-input" placeholder="Enter username" required>
                 </div>
-                <div class="user-info">
+                <div>
+                    <label class="form-label">Password</label>
+                    <input type="password" id="password" class="login-input" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="login-btn">🔓 Login</button>
+                <p class="login-credentials">
+                    Demo Credentials:<br>
+                    Username: <strong>admin</strong><br>
+                    Password: <strong>admin123</strong>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN APPLICATION -->
+    <div id="mainApp" style="display: none;">
+        <div class="container-main">
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+                <div class="logo">
+                    <div class="logo-icon">🍱</div>
+                    <span>MH Tiffin</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a class="nav-link active" data-tab="billing">💳 Billing</a></li>
+                    <li class="nav-item"><a class="nav-link" data-tab="transactions">📊 Transactions</a></li>
+                    <li class="nav-item"><a class="nav-link" data-tab="reports">📈 Reports</a></li>
+                    <li class="nav-item"><a class="nav-link" data-tab="settings">⚙️ Settings</a></li>
+                </ul>
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="main-content">
+                <!-- HEADER -->
+                <div class="header">
                     <div>
-                        <div style="font-size: 12px; color: var(--color-text-light);">Logged In As</div>
-                        <div style="font-weight: 600;">Admin User</div>
+                        <h1>MH Tiffin Billing System</h1>
                     </div>
-                    <div class="user-icon">👤</div>
-                </div>
-            </div>
-
-            <!-- ===== BILLING TAB ===== -->
-            <div id="billing" class="tab-container active">
-                <div class="tabs-header">
-                    <button class="tab-btn active" data-subtab="new-bill">New Bill</button>
-                    <button class="tab-btn" data-subtab="subscriptions">Subscriptions</button>
-                </div>
-
-                <div class="billing-grid">
-                    <!-- LEFT: MENU & CUSTOMER -->
-                    <div>
-                        <div class="billing-card">
-                            <h2>Customer Information</h2>
-                            <div class="form-group">
-                                <label class="form-label">Customer Name *</label>
-                                <input type="text" class="form-input" id="customerName" placeholder="Enter customer name">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Phone Number</label>
-                                <input type="tel" class="form-input" id="customerPhone" placeholder="Enter phone number">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Email</label>
-                                <input type="email" class="form-input" id="customerEmail" placeholder="Enter email">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label">Address</label>
-                                <input type="text" class="form-input" id="customerAddress" placeholder="Enter delivery address">
-                            </div>
-                        </div>
-
-                        <div class="billing-card" style="margin-top: var(--space-24);">
-                            <h2>Select Items</h2>
-                            <div class="menu-items-list" id="menuList">
-                                <button class="menu-item-btn" data-item="Paneer Butter Masala" data-price="120">
-                                    Paneer Butter Masala <span class="menu-item-price">₹120</span>
-                                </button>
-                                <button class="menu-item-btn" data-item="Chicken Tikka Masala" data-price="150">
-                                    Chicken Tikka Masala <span class="menu-item-price">₹150</span>
-                                </button>
-                                <button class="menu-item-btn" data-item="Vegetable Biryani" data-price="130">
-                                    Vegetable Biryani <span class="menu-item-price">₹130</span>
-                                </button>
-                                <button class="menu-item-btn" data-item="Dal Makhani" data-price="100">
-                                    Dal Makhani <span class="menu-item-price">₹100</span>
-                                </button>
-                                <button class="menu-item-btn" data-item="Mutton Curry" data-price="180">
-                                    Mutton Curry <span class="menu-item-price">₹180</span>
-                                </button>
-                                <button class="menu-item-btn" data-item="Mixed Vegetable Sabzi" data-price="90">
-                                    Mixed Vegetable Sabzi <span class="menu-item-price">₹90</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- RIGHT: CART & BILLING -->
-                    <div>
-                        <div class="cart-section">
-                            <h2 style="margin-bottom: var(--space-16);">Order Summary</h2>
-                            <div class="cart-items" id="cartItems">
-                                <div style="text-align: center; color: var(--color-text-light); padding: var(--space-24);">
-                                    No items added yet
-                                </div>
-                            </div>
-
-                            <div class="discount-row">
-                                <input type="number" class="form-input" id="discountAmount" placeholder="Discount (₹)" value="0">
-                                <button class="btn btn-small" style="background: var(--color-primary); color: white; padding: var(--space-12) var(--space-20);">Apply</button>
-                            </div>
-
-                            <div class="cart-summary">
-                                <div class="summary-row">
-                                    <span>Subtotal:</span>
-                                    <span id="subtotal">₹0</span>
-                                </div>
-                                <div class="summary-row">
-                                    <span>Discount:</span>
-                                    <span id="discountDisplay">₹0</span>
-                                </div>
-                                <div class="summary-row">
-                                    <span>Tax (5%):</span>
-                                    <span id="taxAmount">₹0</span>
-                                </div>
-                                <div class="summary-row total">
-                                    <span>Total Amount:</span>
-                                    <span id="totalAmount">₹0</span>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-primary" id="proceedPayment" style="cursor: not-allowed; opacity: 0.5;">Proceed to Payment</button>
-                            <button class="btn btn-secondary" id="generateBill">🖨️ Generate Bill</button>
-                            <button class="btn" style="background: var(--color-border); color: var(--color-text); width: 100%; justify-content: center;" id="resetBill">Clear Cart</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== TRANSACTIONS TAB ===== -->
-            <div id="transactions" class="tab-container">
-                <div class="transactions-table">
-                    <div class="transactions-header">
-                        <div>Bill ID</div>
-                        <div>Customer</div>
-                        <div>Amount</div>
-                        <div>Date</div>
-                        <div>Status</div>
-                    </div>
-                    <div id="transactionsList">
-                        <div class="transactions-row" style="grid-template-columns: 1fr; text-align: center; color: var(--color-text-light);">
-                            No transactions yet
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== REPORTS TAB ===== -->
-            <div id="reports" class="tab-container">
-                <div class="stats-grid" id="statsContainer">
-                    <div class="stat-card">
-                        <div class="stat-label">Total Revenue (Today)</div>
-                        <div class="stat-value" id="totalRevenue">₹0</div>
-                        <div class="stat-change">↑ 0% from yesterday</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Total Orders (Today)</div>
-                        <div class="stat-value" id="totalOrders">0</div>
-                        <div class="stat-change">↑ 0 from yesterday</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Avg Order Value</div>
-                        <div class="stat-value" id="avgOrderValue">₹0</div>
-                        <div class="stat-change">Today's average</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-label">Pending Payments</div>
-                        <div class="stat-value" id="pendingPayments">0</div>
-                        <div class="stat-change">Awaiting collection</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ===== SETTINGS TAB ===== -->
-            <div id="settings" class="tab-container">
-                <div class="settings-group">
-                    <h3>Tax Settings</h3>
-                    <div class="setting-row">
+                    <div class="user-info">
                         <div>
-                            <div style="font-weight: 600;">GST Tax Rate</div>
-                            <div style="font-size: 12px; color: var(--color-text-light);">Set tax percentage for bills</div>
+                            <div style="font-size: 12px; color: var(--color-text-light);">Logged In As</div>
+                            <div style="font-weight: 600;" id="userName">Admin User</div>
                         </div>
-                        <input type="number" class="form-input" id="taxRate" value="5" style="width: 80px;">%
+                        <div class="user-icon">👤</div>
                     </div>
                 </div>
 
-                <div class="settings-group">
-                    <h3>Payment Methods</h3>
-                    <div class="setting-row">
-                        <div>
-                            <div style="font-weight: 600;">Cash Payment</div>
-                        </div>
-                        <div class="toggle active" data-payment="cash">
-                            <div class="toggle-circle"></div>
-                        </div>
+                <!-- BILLING TAB -->
+                <div id="billing" class="tab-container active">
+                    <div class="tabs-header">
+                        <button class="tab-btn active" data-subtab="new-bill">New Bill</button>
                     </div>
-                    <div class="setting-row">
+
+                    <div class="billing-grid">
+                        <!-- LEFT: MENU & CUSTOMER -->
                         <div>
-                            <div style="font-weight: 600;">Card Payment</div>
+                            <div class="billing-card">
+                                <h2>Customer Information</h2>
+                                <div class="form-group">
+                                    <label class="form-label">Customer Name *</label>
+                                    <input type="text" class="form-input" id="customerName" placeholder="Enter customer name">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-input" id="customerPhone" placeholder="Enter phone number">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-input" id="customerEmail" placeholder="Enter email">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-input" id="customerAddress" placeholder="Enter delivery address">
+                                </div>
+                            </div>
+
+                            <div class="billing-card" style="margin-top: 24px;">
+                                <h2>Select Items</h2>
+                                <div class="menu-items-list" id="menuList">
+                                    <button class="menu-item-btn" data-item="Paneer Butter Masala" data-price="120">
+                                        Paneer Butter Masala <span class="menu-item-price">₹120</span>
+                                    </button>
+                                    <button class="menu-item-btn" data-item="Chicken Tikka Masala" data-price="150">
+                                        Chicken Tikka Masala <span class="menu-item-price">₹150</span>
+                                    </button>
+                                    <button class="menu-item-btn" data-item="Vegetable Biryani" data-price="130">
+                                        Vegetable Biryani <span class="menu-item-price">₹130</span>
+                                    </button>
+                                    <button class="menu-item-btn" data-item="Dal Makhani" data-price="100">
+                                        Dal Makhani <span class="menu-item-price">₹100</span>
+                                    </button>
+                                    <button class="menu-item-btn" data-item="Mutton Curry" data-price="180">
+                                        Mutton Curry <span class="menu-item-price">₹180</span>
+                                    </button>
+                                    <button class="menu-item-btn" data-item="Mixed Vegetable Sabzi" data-price="90">
+                                        Mixed Vegetable Sabzi <span class="menu-item-price">₹90</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="toggle active" data-payment="card">
-                            <div class="toggle-circle"></div>
-                        </div>
-                    </div>
-                    <div class="setting-row">
+
+                        <!-- RIGHT: CART & BILLING -->
                         <div>
-                            <div style="font-weight: 600;">Digital Wallet (UPI, Paytm)</div>
-                        </div>
-                        <div class="toggle active" data-payment="digital">
-                            <div class="toggle-circle"></div>
+                            <div class="cart-section">
+                                <h2 style="margin-bottom: 16px;">Order Summary</h2>
+                                <div class="cart-items" id="cartItems">
+                                    <div style="text-align: center; color: var(--color-text-light); padding: 24px;">
+                                        No items added yet
+                                    </div>
+                                </div>
+
+                                <div class="discount-row">
+                                    <input type="number" class="form-input" id="discountAmount" placeholder="Discount (₹)" value="0">
+                                    <button class="btn btn-small" style="background: var(--color-primary); color: white; padding: 12px 20px;">Apply</button>
+                                </div>
+
+                                <div class="cart-summary">
+                                    <div class="summary-row">
+                                        <span>Subtotal:</span>
+                                        <span id="subtotal">₹0</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Discount:</span>
+                                        <span id="discountDisplay">₹0</span>
+                                    </div>
+                                    <div class="summary-row">
+                                        <span>Tax (5%):</span>
+                                        <span id="taxAmount">₹0</span>
+                                    </div>
+                                    <div class="summary-row total">
+                                        <span>Total Amount:</span>
+                                        <span id="totalAmount">₹0</span>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-primary" id="proceedPayment" style="cursor: not-allowed; opacity: 0.5;">Proceed to Payment</button>
+                                <button class="btn btn-secondary" id="generateBill">🖨️ Generate Bill</button>
+                                <button class="btn" style="background: var(--color-border); color: var(--color-text); width: 100%; justify-content: center;" id="resetBill">Clear Cart</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="settings-group">
-                    <h3>Business Information</h3>
-                    <div class="form-group">
-                        <label class="form-label">Business Name</label>
-                        <input type="text" class="form-input" value="MH Tiffin Stall" id="businessName">
+                <!-- TRANSACTIONS TAB -->
+                <div id="transactions" class="tab-container">
+                    <div class="transactions-table">
+                        <div class="transactions-header">
+                            <div>Bill ID</div>
+                            <div>Customer</div>
+                            <div>Amount</div>
+                            <div>Date</div>
+                            <div>Status</div>
+                        </div>
+                        <div id="transactionsList">
+                            <div class="transactions-row" style="grid-template-columns: 1fr; text-align: center; color: var(--color-text-light);">
+                                No transactions yet
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">GST Number</label>
-                        <input type="text" class="form-input" placeholder="Enter GST number" id="gstNumber">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Contact Number</label>
-                        <input type="tel" class="form-input" placeholder="Enter business contact" id="businessContact">
-                    </div>
-                    <button class="btn btn-primary" style="width: auto;">Save Settings</button>
                 </div>
-            </div>
-        </main>
+
+                <!-- REPORTS TAB -->
+                <div id="reports" class="tab-container">
+                    <div class="stats-grid" id="statsContainer">
+                        <div class="stat-card">
+                            <div class="stat-label">Total Revenue (Today)</div>
+                            <div class="stat-value" id="totalRevenue">₹0</div>
+                            <div class="stat-change">↑ 0% from yesterday</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Total Orders (Today)</div>
+                            <div class="stat-value" id="totalOrders">0</div>
+                            <div class="stat-change">↑ 0 from yesterday</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Avg Order Value</div>
+                            <div class="stat-value" id="avgOrderValue">₹0</div>
+                            <div class="stat-change">Today's average</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-label">Pending Payments</div>
+                            <div class="stat-value" id="pendingPayments">0</div>
+                            <div class="stat-change">Awaiting collection</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SETTINGS TAB -->
+                <div id="settings" class="tab-container">
+                    <div class="billing-card">
+                        <h2>Tax Settings</h2>
+                        <div class="form-group">
+                            <label class="form-label">GST Tax Rate (%)</label>
+                            <input type="number" class="form-input" id="taxRate" value="5">
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
     </div>
 
     <!-- PAYMENT MODAL -->
@@ -909,7 +921,7 @@
 
             <div class="form-group">
                 <label class="form-label">Bill Amount</label>
-                <div style="font-size: 28px; font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-16);" id="billAmountDisplay">₹0</div>
+                <div style="font-size: 28px; font-weight: 700; color: var(--color-primary); margin-bottom: 16px;" id="billAmountDisplay">₹0</div>
             </div>
 
             <div class="form-group">
@@ -949,7 +961,9 @@
     </div>
 
     <script>
-        // ===== STATE MANAGEMENT =====
+        const API_URL = 'http://localhost:5000/api';
+
+        // STATE MANAGEMENT
         const state = {
             cart: [],
             transactions: [],
@@ -959,7 +973,52 @@
             discount: 0
         };
 
-        // ===== TAB SWITCHING =====
+        // LOGIN HANDLER
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    localStorage.setItem('authToken', result.token);
+                    localStorage.setItem('user', JSON.stringify(result.user));
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('mainApp').style.display = 'block';
+                    document.getElementById('userName').textContent = result.user.username || 'Admin';
+                    loadTransactions();
+                } else {
+                    alert('❌ ' + (result.message || 'Login failed'));
+                }
+            } catch (error) {
+                alert('❌ Login error: ' + error.message);
+                console.error(error);
+            }
+        });
+
+        // CHECK LOGIN ON LOAD
+        window.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('authToken');
+            const user = localStorage.getItem('user');
+
+            if (token && user) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('mainApp').style.display = 'block';
+                const userData = JSON.parse(user);
+                document.getElementById('userName').textContent = userData.username || 'Admin';
+                loadTransactions();
+            }
+        });
+
+        // TAB SWITCHING
         document.querySelectorAll('[data-tab]').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -978,7 +1037,7 @@
             state.selectedTab = tab;
         }
 
-        // ===== MENU ITEM SELECTION =====
+        // MENU ITEM SELECTION
         document.querySelectorAll('.menu-item-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const item = this.dataset.item;
@@ -997,12 +1056,12 @@
             updateCart();
         }
 
-        // ===== CART MANAGEMENT =====
+        // CART MANAGEMENT
         function updateCart() {
             const cartItemsEl = document.getElementById('cartItems');
-            
+
             if (state.cart.length === 0) {
-                cartItemsEl.innerHTML = '<div style="text-align: center; color: var(--color-text-light); padding: var(--space-24);">No items added yet</div>';
+                cartItemsEl.innerHTML = '<div style="text-align: center; color: var(--color-text-light); padding: 24px;">No items added yet</div>';
             } else {
                 cartItemsEl.innerHTML = state.cart.map((item, index) => `
                     <div class="cart-item">
@@ -1022,7 +1081,7 @@
                     </div>
                 `).join('');
             }
-            
+
             calculateTotals();
         }
 
@@ -1040,7 +1099,7 @@
             updateCart();
         }
 
-        // ===== CALCULATIONS =====
+        // CALCULATIONS
         function calculateTotals() {
             const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             state.discount = parseFloat(document.getElementById('discountAmount').value) || 0;
@@ -1053,7 +1112,6 @@
             document.getElementById('taxAmount').textContent = `₹${tax.toFixed(2)}`;
             document.getElementById('totalAmount').textContent = `₹${total.toFixed(2)}`;
 
-            // Enable/disable payment button
             const proceedBtn = document.getElementById('proceedPayment');
             if (state.cart.length > 0) {
                 proceedBtn.style.cursor = 'pointer';
@@ -1066,7 +1124,7 @@
             }
         }
 
-        // ===== PAYMENT FLOW =====
+        // PAYMENT FLOW
         document.getElementById('proceedPayment').addEventListener('click', () => {
             const total = parseFloat(document.getElementById('totalAmount').textContent.replace('₹', ''));
             document.getElementById('billAmountDisplay').textContent = `₹${total.toFixed(2)}`;
@@ -1081,7 +1139,7 @@
             option.addEventListener('click', function() {
                 document.querySelectorAll('.payment-option').forEach(el => el.classList.remove('selected'));
                 this.classList.add('selected');
-                
+
                 const method = this.dataset.method;
                 state.selectedPayment = method;
 
@@ -1109,7 +1167,7 @@
 
             const changeGroup = document.getElementById('cashChangeGroup');
             const changeAmountEl = document.getElementById('changeAmount');
-            
+
             if (received >= billAmount) {
                 changeGroup.style.display = 'block';
                 changeAmountEl.textContent = `₹${change.toFixed(2)}`;
@@ -1124,30 +1182,59 @@
             }
         });
 
-        document.getElementById('confirmPayment').addEventListener('click', () => {
+        document.getElementById('confirmPayment').addEventListener('click', async () => {
             const customerName = document.getElementById('customerName').value || 'Walk-in Customer';
             const total = parseFloat(document.getElementById('totalAmount').textContent.replace('₹', ''));
-            
+            const token = localStorage.getItem('authToken');
+
             const transaction = {
-                id: 'BILL-' + Date.now(),
-                customer: customerName,
-                amount: total,
-                date: new Date().toLocaleDateString(),
-                time: new Date().toLocaleTimeString(),
-                status: 'Paid',
-                method: state.selectedPayment
+                billId: 'BILL-' + Date.now(),
+                customerName: customerName,
+                customerPhone: document.getElementById('customerPhone').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                items: state.cart,
+                subtotal: state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+                discount: state.discount,
+                taxRate: state.taxRate,
+                taxAmount: (((state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0) - state.discount) * state.taxRate) / 100),
+                totalAmount: total,
+                paymentMethod: state.selectedPayment,
+                status: 'paid'
             };
 
-            state.transactions.push(transaction);
-            
-            alert(`✅ Payment Successful!\nBill ID: ${transaction.id}\nAmount: ₹${total.toFixed(2)}\nPayment Method: ${state.selectedPayment}`);
-            
-            document.getElementById('paymentModal').classList.remove('active');
-            resetBill();
-            updateReports();
+            try {
+                const response = await fetch(`${API_URL}/transactions/create`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify(transaction)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    state.transactions.push(transaction);
+                    alert(`✅ Payment Successful!\nBill ID: ${transaction.billId}\nAmount: ₹${total.toFixed(2)}\nPayment Method: ${state.selectedPayment}`);
+                    document.getElementById('paymentModal').classList.remove('active');
+                    resetBill();
+                    updateReports();
+                } else {
+                    alert('❌ Error: ' + (result.message || 'Payment failed'));
+                }
+            } catch (error) {
+                alert('❌ Error: ' + error.message);
+                // Fallback to local storage
+                state.transactions.push(transaction);
+                alert(`✅ Payment Successful!\nBill ID: ${transaction.billId}\nAmount: ₹${total.toFixed(2)}`);
+                document.getElementById('paymentModal').classList.remove('active');
+                resetBill();
+                updateReports();
+            }
         });
 
-        // ===== BILL GENERATION =====
+        // BILL GENERATION
         document.getElementById('generateBill').addEventListener('click', () => {
             if (state.cart.length === 0) {
                 alert('Please add items to generate a bill');
@@ -1177,7 +1264,7 @@
     <div class="header">🍱 MH TIFFIN STALL</div>
     <div class="bill-id">Bill ID: BILL-${Date.now()}<br>Date: ${new Date().toLocaleString()}</div>
     <div><strong>Customer:</strong> ${customerName}</div>
-    
+
     <table>
         <tr>
             <th>Item</th>
@@ -1194,7 +1281,7 @@
         </tr>
         `).join('')}
     </table>
-    
+
     <div class="totals">
         <div class="total-row">
             <span>Subtotal:</span>
@@ -1213,7 +1300,7 @@
             <span>₹${parseFloat(document.getElementById('totalAmount').textContent.replace('₹', '')).toFixed(2)}</span>
         </div>
     </div>
-    
+
     <div class="footer">
         Thank you for your order!<br>
         Nârnaund, Haryana<br>
@@ -1229,9 +1316,9 @@
             setTimeout(() => printWindow.print(), 250);
         });
 
-        // ===== RESET BILL =====
+        // RESET BILL
         document.getElementById('resetBill').addEventListener('click', resetBill);
-        
+
         function resetBill() {
             state.cart = [];
             state.discount = 0;
@@ -1243,10 +1330,10 @@
             updateCart();
         }
 
-        // ===== DISCOUNT APPLICATION =====
-        document.querySelector('button[style*="var(--color-primary)"]').addEventListener('click', calculateTotals);
+        // DISCOUNT APPLICATION
+        document.querySelector('.discount-row button').addEventListener('click', calculateTotals);
 
-        // ===== TRANSACTIONS UPDATE =====
+        // TRANSACTIONS UPDATE
         function updateTransactions() {
             const listEl = document.getElementById('transactionsList');
             if (state.transactions.length === 0) {
@@ -1254,19 +1341,19 @@
             } else {
                 listEl.innerHTML = state.transactions.map(t => `
                     <div class="transactions-row">
-                        <div>${t.id}</div>
-                        <div>${t.customer}</div>
-                        <div>₹${t.amount.toFixed(2)}</div>
-                        <div>${t.date}</div>
+                        <div>${t.billId}</div>
+                        <div>${t.customerName}</div>
+                        <div>₹${t.totalAmount.toFixed(2)}</div>
+                        <div>${new Date(t.createdAt || Date.now()).toLocaleDateString()}</div>
                         <div><span class="status-badge status-paid">${t.status}</span></div>
                     </div>
                 `).join('');
             }
         }
 
-        // ===== REPORTS UPDATE =====
+        // REPORTS UPDATE
         function updateReports() {
-            const totalRevenue = state.transactions.reduce((sum, t) => sum + t.amount, 0);
+            const totalRevenue = state.transactions.reduce((sum, t) => sum + t.totalAmount, 0);
             const totalOrders = state.transactions.length;
             const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
 
@@ -1278,74 +1365,42 @@
             updateTransactions();
         }
 
-        // ===== SETTINGS =====
-        document.querySelectorAll('.toggle').forEach(toggle => {
-            toggle.addEventListener('click', function() {
-                this.classList.toggle('active');
-            });
-        });
+        // LOAD TRANSACTIONS
+        async function loadTransactions() {
+            const token = localStorage.getItem('authToken');
+            try {
+                const response = await fetch(`${API_URL}/transactions/all`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const result = await response.json();
+                if (result.success) {
+                    state.transactions = result.data || [];
+                    updateTransactions();
+                    updateReports();
+                }
+            } catch (error) {
+                console.log('Using local transactions');
+                updateReports();
+            }
+        }
 
+        // SETTINGS
         document.getElementById('taxRate').addEventListener('change', function() {
             state.taxRate = parseFloat(this.value) || 5;
             calculateTotals();
         });
 
-        // ===== INITIAL CALCULATION =====
+        // USER ICON LOGOUT
+        document.querySelector('.user-info').addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                localStorage.removeItem('authToken');
+                localStorage.removeItem('user');
+                location.reload();
+            }
+        });
+
+        // INITIAL CALCULATION
         calculateTotals();
     </script>
-// Show login screen if not logged in
-window.addEventListener('DOMContentLoaded', () => {
-  const token = localStorage.getItem('authToken');
-  if (!token) {
-    showLoginScreen();
-  } else {
-    // Show billing dashboard
-    document.getElementById('billing').style.display = 'block';
-  }
-});
-
-function showLoginScreen() {
-  document.body.innerHTML = `
-    <div style="text-align: center; padding: 50px;">
-      <h1>MH Tiffin Billing System</h1>
-      <p>Please log in to continue</p>
-      <button onclick="showLoginForm()">Login</button>
-    </div>
-  `;
-}
-
-function showLoginForm() {
-  document.body.innerHTML = `
-    <div style="max-width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc;">
-      <h2>Login</h2>
-      <form id="loginForm">
-        <div style="margin: 10px 0;">
-          <label>Username:</label>
-          <input type="text" id="username" required style="width: 100%; padding: 8px;">
-        </div>
-        <div style="margin: 10px 0;">
-          <label>Password:</label>
-          <input type="password" id="password" required style="width: 100%; padding: 8px;">
-        </div>
-        <button type="submit" style="margin-top: 10px; padding: 10px 20px;">Login</button>
-      </form>
-    </div>
-  `;
-  
-  document.getElementById('loginForm').addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    
-    // For testing, use these credentials
-    if (username === 'admin' && password === 'admin123') {
-      localStorage.setItem('authToken', 'dummy-token');
-      window.location.reload();
-    } else {
-      alert('Invalid username or password');
-    }
-  });
-}
-
 </body>
 </html>
