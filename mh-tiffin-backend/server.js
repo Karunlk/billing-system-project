@@ -8,16 +8,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://billing-system-xi-khaki.vercel.app','http://localhost:3000',
+  origin: ['https://billing-system-xi-khaki.vercel.app', 'http://localhost:3000'],
   credentials: true
 }));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json());
-app.use((err, req, res, next) => {
-  console.error(err);
-  res.status(500).json({ success: false, message: 'Internal Server Error' });
-});
 
 // MongoDB Connection
 mongoose.connect(process.env.MONGODB_URI, {
@@ -32,7 +28,6 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Routes Import
 const authRoutes = require('./routes/auth');
-app.use('/api',authRoutes);
 const transactionRoutes = require('./routes/transactions');
 const menuRoutes = require('./routes/menu');
 const paymentRoutes = require('./routes/payment');
