@@ -8,8 +8,8 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['https://billing-system-70ql94b0v-dummy-coder-mans-projects.vercel.app','http://localhost:3000',
-  ]credentials: true
+  origin: 'https://billing-system-70ql94b0v-dummy-coder-mans-projects.vercel.app','http://localhost:3000',
+  credentials: true
 }));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
@@ -28,6 +28,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Routes Import
 const authRoutes = require('./routes/auth');
+app.use('/api',authRoutes);
 const transactionRoutes = require('./routes/transactions');
 const menuRoutes = require('./routes/menu');
 const paymentRoutes = require('./routes/payment');
