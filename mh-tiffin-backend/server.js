@@ -8,8 +8,8 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  origin: ['https://billing-system-70ql94b0v-dummy-coder-mans-projects.vercel.app','http://localhost:3000',
+  ]credentials: true
 }));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
