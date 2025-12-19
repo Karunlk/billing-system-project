@@ -8,7 +8,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "*",
+  origin: ['https://billing-system-xi-khaki.vercel.app', 'http://localhost:3000'],
   credentials: true
 }));
 app.use(bodyParser.json({ limit: '50mb' }));
