@@ -987,6 +987,7 @@
                 });
 
                 const result = await response.json();
+console.log("FULL LOGIN RESPONSE:", result);
 
                 if (result.success) {
                     localStorage.setItem('authToken', result.token);
