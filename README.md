@@ -1,3 +1,3 @@
 # billing-system
 frontend
-mongodb+srv://admin:<db_password>@cluster0.bn03gtb.mongodb.net/?appName=Cluster0
+This repo is for my project called billing-system 
