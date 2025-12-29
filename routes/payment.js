@@ -1,5 +1,5 @@
 const express = require('express');
-const Razorpay = require('razorpay');
+
 const crypto = require('crypto');
 const Transaction = require('../models/Transaction');
 const { authMiddleware } = require('../middleware/auth');
@@ -7,10 +7,16 @@ const { authMiddleware } = require('../middleware/auth');
 const router = express.Router();
 
 // Initialize Razorpay
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET
-});
+let razorpay = null;
+
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+  const Razorpay = require("razorpay");
+  razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET
+  });
+}
+
 
 // Create Razorpay Order
 router.post('/create-order', authMiddleware, async (req, res) => {

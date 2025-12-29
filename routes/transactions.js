@@ -39,7 +39,10 @@ router.get('/all', authMiddleware, async (req, res) => {
       if (endDate) filter.createdAt.$lte = new Date(endDate);
     }
     
-    const transactions = await Transaction.find(filter)
+   const transactions = await Transaction.find({
+  ...filter,
+  createdBy: req.user.id
+})
       .populate('createdBy', 'username')
       .sort({ createdAt: -1 });
     
